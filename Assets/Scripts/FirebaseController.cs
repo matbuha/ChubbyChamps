@@ -3,14 +3,44 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Firebase.Auth;
+using System;
+using Firebase;
+using System.Threading.Tasks;
+using Firebase.Extensions;
 
 public class FirebaseController : MonoBehaviour {
 
 
+    private FirebaseUser user;
+    // private string displayName;
+    // private string emailAddress;
+    // private Uri photoUrl;
+    private FirebaseAuth auth;
     public GameObject loginPanel, signupPanel, mainPagePanel, forgetPasswordPanel, notificationPanel;
     public TMP_InputField loginEmail, loginPassword, signupEmail, signupPassword,signupConfirmPassword, signupUserName,forgetPassEmail;
     public TMP_Text titleText, errorMessage, profileUserName_Text, profileUserEmail_Text;
     public Toggle rememberMe;
+    bool isSignIn = false;
+
+
+
+    void Start() {
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == DependencyStatus.Available) {
+                    // Create and hold a reference to your FirebaseApp,
+                    // where app is a Firebase.FirebaseApp property of your application class.
+                    InitializeFirebase();
+
+                    // Set a flag here to indicate whether Firebase is ready to use by your app.
+                } else {
+                    Debug.LogError(string.Format(
+                    "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                    // Firebase Unity SDK is not safe to use here.
+                }
+            });
+    }
 
 
     public void OpenLoginPanel () {
@@ -47,6 +77,8 @@ public class FirebaseController : MonoBehaviour {
             showNotifactionMessage("Error", "Please Fill All Necessary Fields");
             return;
         }
+
+        SignInUser(loginEmail.text, loginPassword.text);
     }
 
     public void SignUpUser() {
@@ -56,6 +88,8 @@ public class FirebaseController : MonoBehaviour {
             showNotifactionMessage("Error", "Please Fill All Necessary Fields");
             return;
         }
+
+        CreateUser(signupEmail.text, signupPassword.text, signupUserName.text);
     }
 
     public void forgetPass() {
@@ -81,9 +115,116 @@ public class FirebaseController : MonoBehaviour {
     }
 
     public void Logout() {
+        auth.SignOut();
         profileUserEmail_Text.text = "";
         profileUserName_Text.text = "";
         
         OpenLoginPanel();
+    }
+
+
+    public void CreateUser(string email, string password, string UserName) {
+        auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task => {
+            if (task.IsCanceled) {
+                Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted) {
+                Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            // Firebase user has been created.
+            AuthResult result = task.Result;
+            Debug.LogFormat("Firebase user created successfully: {0} ({1})",
+                result.User.DisplayName, result.User.UserId);
+
+                UpdateUserProfile(UserName);
+        });
+    }
+
+    public void SignInUser (string email, string password) {
+        auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task => {
+        if (task.IsCanceled) {
+            Debug.LogError("SignInWithEmailAndPasswordAsync was canceled.");
+            return;
+        }
+        if (task.IsFaulted) {
+            Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+            return;
+        }
+
+        AuthResult newUser = task.Result;
+        Debug.LogFormat("User signed in successfully: {0} ({1})",
+            newUser.User.DisplayName, newUser.User.UserId);
+            
+            profileUserName_Text.text = "" + newUser.User.DisplayName;
+            profileUserEmail_Text.text  = "" + newUser.User.Email;
+            OpenMainPagePanel();
+        });
+    }
+
+    void InitializeFirebase() {
+        Debug.Log("Setting up Firebase Auth");
+        auth = FirebaseAuth.DefaultInstance;
+        auth.StateChanged += AuthStateChanged;
+        AuthStateChanged(this, null);
+    }
+
+    void AuthStateChanged(object sender, EventArgs eventArgs) {
+        if (auth.CurrentUser != user) {
+            bool signedIn = user != auth.CurrentUser && auth.CurrentUser != null
+                && auth.CurrentUser.IsValid();
+            if (!signedIn && user != null) {
+                Debug.Log("Signed out " + user.UserId);
+            }
+            user = auth.CurrentUser;
+            if (signedIn) {
+                Debug.Log("Signed in " + user.UserId);
+                isSignIn = true;
+            }
+        }
+    }
+
+    void OnDestroy() {
+        auth.StateChanged -= AuthStateChanged;
+        auth = null;
+    }
+
+    void UpdateUserProfile(string UserName) {
+        FirebaseUser user = auth.CurrentUser;
+        if (user != null) {
+            UserProfile profile = new UserProfile {
+                DisplayName = UserName,
+                PhotoUrl = new Uri("https://via.placeholder.com/150"),
+            };
+            user.UpdateUserProfileAsync(profile).ContinueWith(task => {
+                if (task.IsCanceled) {
+                    Debug.LogError("UpdateUserProfileAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted) {
+                    Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("User profile updated successfully.");
+
+                showNotifactionMessage("Alert", "Account Successfully Created");
+            });
+        }
+    }
+
+    bool isSigned = false;
+
+    void Update() {
+        if (isSignIn) {
+            if (isSigned) {
+                isSigned = true;
+                profileUserName_Text.text = "" + user.DisplayName;
+                profileUserEmail_Text.text  = "" + user.Email;
+                OpenMainPagePanel();
+            }
+        }
     }
 }
