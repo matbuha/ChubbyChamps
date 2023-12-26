@@ -13,9 +13,6 @@ public class FirebaseController : MonoBehaviour {
 
 
     private FirebaseUser user;
-    // private string displayName;
-    // private string emailAddress;
-    // private Uri photoUrl;
     private FirebaseAuth auth;
     public GameObject loginPanel, signupPanel, mainPagePanel, forgetPasswordPanel, notificationPanel;
     public TMP_InputField loginEmail, loginPassword, signupEmail, signupPassword,signupConfirmPassword, signupUserName,forgetPassEmail;
@@ -123,7 +120,7 @@ public class FirebaseController : MonoBehaviour {
     }
 
 
-    public void CreateUser(string email, string password, string UserName) {
+    void CreateUser(string email, string password, string UserName) {
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task => {
             if (task.IsCanceled) {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync was canceled.");
@@ -131,6 +128,16 @@ public class FirebaseController : MonoBehaviour {
             }
             if (task.IsFaulted) {
                 Debug.LogError("CreateUserWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+
+                foreach (Exception exception in task.Exception.Flatten().InnerExceptions) {
+                    FirebaseException firebaseEx = exception as FirebaseException;
+                        if (firebaseEx != null)
+                        {
+                            var errorCode = (AuthError)firebaseEx.ErrorCode;
+                            showNotifactionMessage("Error", GetErrorMessage(errorCode));
+                        }
+                }
+
                 return;
             }
 
@@ -151,6 +158,14 @@ public class FirebaseController : MonoBehaviour {
         }
         if (task.IsFaulted) {
             Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
+            Exception exception = task.Exception;
+            FirebaseException firebaseEx = exception as FirebaseException;
+                if (firebaseEx != null)
+                {
+                    var errorCode = (AuthError)firebaseEx.ErrorCode;
+                    showNotifactionMessage("Error", GetErrorMessage(errorCode));
+                }
+
             return;
         }
 
@@ -227,4 +242,37 @@ public class FirebaseController : MonoBehaviour {
             }
         }
     }
+
+    private static string GetErrorMessage(AuthError errorCode)
+{
+    var message = "";
+    switch (errorCode)
+    {
+        case AuthError.AccountExistsWithDifferentCredentials:
+            message = "The account already exists with different credentials";
+            break;
+        case AuthError.MissingPassword:
+            message = "Password is needed";
+            break;
+        case AuthError.WeakPassword:
+            message = "The password is weak";
+            break;
+        case AuthError.WrongPassword:
+            message = "The password is incorrect";
+            break;
+        case AuthError.EmailAlreadyInUse:
+            message = "The account with that email already exists";
+            break;
+        case AuthError.InvalidEmail:
+            message = "invalid email";
+            break;
+        case AuthError.MissingEmail:
+            message = "Email is needed";
+            break;
+        default:
+            message = "An error occurred";
+            break;
+    }
+    return message;
+}
 }
