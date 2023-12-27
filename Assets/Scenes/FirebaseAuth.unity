@@ -3004,7 +3004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loginPanel: {fileID: 1841818823}
   signupPanel: {fileID: 955285038}
-  profilePagePanel: {fileID: 0}
+  profilePagePanel: {fileID: 1801240448}
   forgetPasswordPanel: {fileID: 175438947}
   notificationPanel: {fileID: 1773052669}
   loginEmail: {fileID: 1492858395}
@@ -8769,8 +8769,8 @@ RectTransform:
   - {fileID: 1699423473}
   - {fileID: 1971713287}
   - {fileID: 1069981760}
-  - {fileID: 139870832}
   - {fileID: 1164190543}
+  - {fileID: 139870832}
   m_Father: {fileID: 1293582461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -16,7 +16,7 @@ public class FirebaseController : MonoBehaviour {
     private FirebaseAuth auth;
     public GameObject loginPanel, signupPanel, profilePagePanel, forgetPasswordPanel, notificationPanel;
     public TMP_InputField loginEmail, loginPassword, signupEmail, signupPassword,signupConfirmPassword, signupUserName,forgetPassEmail;
-    public TMP_Text titleText, errorMessage, profileUserName_Text, profileUserEmail_Text;
+    public TMP_Text errorTitleText, errorMessage, profileUserName_Text, profileUserEmail_Text;
     public Toggle rememberMe;
     bool isSignIn = false;
 
@@ -54,7 +54,7 @@ public class FirebaseController : MonoBehaviour {
         forgetPasswordPanel.SetActive(false);
     }
 
-    public void OpenMainPagePanel () {
+    public void OpenProfilePagePanel () {
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
         profilePagePanel.SetActive(true);
@@ -100,14 +100,14 @@ public class FirebaseController : MonoBehaviour {
     }
 
     private void showNotifactionMessage(string title, string message) {
-        titleText.text = "" + title;
+        errorTitleText.text = "" + title;
         errorMessage.text = "" + message;
 
         notificationPanel.SetActive(true);
     }
 
     public void closeNotifactionMessage() {
-        titleText.text = "";
+        errorTitleText.text = "";
         errorMessage.text = "";
 
         notificationPanel.SetActive(false);
@@ -178,7 +178,7 @@ public class FirebaseController : MonoBehaviour {
                 
             profileUserName_Text.text = "" + newUser.User.DisplayName;
             profileUserEmail_Text.text  = "" + newUser.User.Email;
-            OpenMainPagePanel();
+            OpenProfilePagePanel();
         });
     }
 
@@ -241,7 +241,7 @@ public class FirebaseController : MonoBehaviour {
                 isSigned = true;
                 profileUserName_Text.text = "" + user.DisplayName;
                 profileUserEmail_Text.text  = "" + user.Email;
-                OpenMainPagePanel();
+                OpenProfilePagePanel();
             }
         }
     }
