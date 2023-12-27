@@ -297,4 +297,32 @@ public class FirebaseController : MonoBehaviour {
             showNotifactionMessage("Alert", "Check Your Email For Further Instructions");
         });
     }
+
+    public void SaveCredentials(string email, string password) {
+        if (Application.platform == RuntimePlatform.Android) {
+            using (var javaClass = new AndroidJavaClass("com.yourcompany.plugin.SharedPreferencesManager")) {
+                using (var unityActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
+                    var context = unityActivity.GetStatic<AndroidJavaObject>("currentActivity");
+                    javaClass.CallStatic("setRememberMe", context, email, password);
+                }
+            }
+        }
+    }
+
+    public void LoadCredentials() {
+        if (Application.platform == RuntimePlatform.Android) {
+            string email = "", password = "";
+            using (var javaClass = new AndroidJavaClass("com.arielbz.ChubbyChampsANDROID.plugin.SharedPreferencesManager")) {
+                using (var unityActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
+                    var context = unityActivity.GetStatic<AndroidJavaObject>("currentActivity");
+                    email = javaClass.CallStatic<string>("getUserEmail", context);
+                    password = javaClass.CallStatic<string>("getUserPassword", context);
+                }
+            }
+
+            // Now you have your email and password, handle them accordingly
+            Debug.Log("Email: " + email + ", Password: " + password);
+            // Autofill or whatever you need to do with them
+        }
+    }
 }
