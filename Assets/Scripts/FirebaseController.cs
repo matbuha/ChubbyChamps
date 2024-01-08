@@ -15,7 +15,7 @@ public class FirebaseController : MonoBehaviour {
 
     private FirebaseUser user;
     private FirebaseAuth auth;
-    public GameObject loginPanel, signupPanel, profilePagePanel, forgetPasswordPanel, notificationPanel;
+    public GameObject loginPanel, signupPanel, mainPagePanel, forgetPasswordPanel, notificationPanel;
     public TMP_InputField loginEmail, loginPassword, signupEmail, signupPassword,signupConfirmPassword, signupUserName,forgetPassEmail;
     public TMP_Text errorTitleText, errorMessage, profileUserName_Text, profileUserEmail_Text;
     public Toggle rememberMe;
@@ -44,28 +44,28 @@ public class FirebaseController : MonoBehaviour {
     public void OpenLoginPanel () {
         loginPanel.SetActive(true);
         signupPanel.SetActive(false);
-        profilePagePanel.SetActive(false);
+        mainPagePanel.SetActive(false);
         forgetPasswordPanel.SetActive(false);
     }
 
     public void OpenSignUpPanel () {
         loginPanel.SetActive(false);
         signupPanel.SetActive(true);
-        profilePagePanel.SetActive(false);
+        mainPagePanel.SetActive(false);
         forgetPasswordPanel.SetActive(false);
     }
 
     public void OpenProfilePagePanel () {
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
-        profilePagePanel.SetActive(true);
+        mainPagePanel.SetActive(true);
         forgetPasswordPanel.SetActive(false);
     }
 
     public void OpenforgetPassPanel () {
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
-        profilePagePanel.SetActive(false);
+        mainPagePanel.SetActive(false);
         forgetPasswordPanel.SetActive(true);
     }
 
