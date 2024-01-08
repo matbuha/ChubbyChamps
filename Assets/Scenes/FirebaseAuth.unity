@@ -363,7 +363,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -994,7 +994,6 @@ GameObject:
   - component: {fileID: 139870835}
   - component: {fileID: 139870834}
   - component: {fileID: 139870833}
-  - component: {fileID: 139870837}
   m_Layer: 5
   m_Name: GoogleSignIn
   m_TagString: Untagged
@@ -1090,6 +1089,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139870831}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!114 &139870837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,6 +1148,8 @@ MonoBehaviour:
         m_CallState: 2
 =======
 >>>>>>> parent of 22c9e70 (Adding Google Login UI)
+=======
+>>>>>>> parent of cac91df (Adding Google Sign in)
 --- !u!1 &158276858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1919,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2467,7 +2469,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 339}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535676875
 MonoBehaviour:
@@ -3041,10 +3043,14 @@ MonoBehaviour:
   loginPanel: {fileID: 1841818823}
   signupPanel: {fileID: 955285038}
 <<<<<<< HEAD
+<<<<<<< HEAD
   profilePagePanel: {fileID: 28386850}
 =======
   mainPagePanel: {fileID: 28386850}
 >>>>>>> parent of 22c9e70 (Adding Google Login UI)
+=======
+  profilePagePanel: {fileID: 1801240448}
+>>>>>>> parent of cac91df (Adding Google Sign in)
   forgetPasswordPanel: {fileID: 175438947}
   notificationPanel: {fileID: 1773052669}
   loginEmail: {fileID: 1492858395}
@@ -3054,7 +3060,7 @@ MonoBehaviour:
   signupConfirmPassword: {fileID: 1832542420}
   signupUserName: {fileID: 1891529359}
   forgetPassEmail: {fileID: 1983375784}
-  errorTitleText: {fileID: 1227029866}
+  titleText: {fileID: 1227029866}
   errorMessage: {fileID: 1115051313}
   profileUserName_Text: {fileID: 726912044}
   profileUserEmail_Text: {fileID: 1901280757}
@@ -3827,7 +3833,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4936,7 +4942,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 218}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224275539
 MonoBehaviour:
@@ -5086,7 +5092,7 @@ GameObject:
   - component: {fileID: 1227029867}
   - component: {fileID: 1227029866}
   m_Layer: 5
-  m_Name: ErrorTitleText
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5782,7 +5788,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 506}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492858393
 MonoBehaviour:
@@ -6293,7 +6299,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565158084
 MonoBehaviour:
@@ -7225,7 +7231,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
 <<<<<<< HEAD
     m_PressedColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
 =======
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
@@ -7253,13 +7259,13 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 656217825}
-        m_TargetAssemblyTypeName: FirebaseController, Assembly-CSharp
-        m_MethodName: LoadCredentials
+      - m_Target: {fileID: 656217824}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7480,7 +7486,7 @@ RectTransform:
   m_GameObject: {fileID: 1712799323}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7160765, y: 2.3619273, z: 1.327}
+  m_LocalScale: {x: 1.2932, y: 1.7799, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 695375748}
@@ -7488,7 +7494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 303, y: 305}
+  m_AnchoredPosition: {x: 339, y: 321}
   m_SizeDelta: {x: 168.2738, y: 31.5513}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712799325
@@ -7824,7 +7830,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8055,7 +8061,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8220,7 +8226,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -126}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832542420
 MonoBehaviour:
@@ -8618,7 +8624,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 384}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1891529359
 MonoBehaviour:
@@ -9193,7 +9199,7 @@ RectTransform:
   m_GameObject: {fileID: 1952125351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6018869, y: 2.2047622, z: 1.2387}
+  m_LocalScale: {x: 1.2932, y: 1.7799, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 567537933}
@@ -9201,7 +9207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309, y: -262}
+  m_AnchoredPosition: {x: 336.69617, y: -262}
   m_SizeDelta: {x: 171.8369, y: 34.7872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952125353
@@ -9403,7 +9409,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9700,7 +9706,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 429}
-  m_SizeDelta: {x: 900, y: 70}
+  m_SizeDelta: {x: 900, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1983375784
 MonoBehaviour:
@@ -10267,7 +10273,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 42.05
   m_fontSizeBase: 35.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10317,57 +10323,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133148189}
   m_CullTransparentMesh: 1
---- !u!1 &2143283371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2143283373}
-  - component: {fileID: 2143283372}
-  m_Layer: 0
-  m_Name: FirebaseGoogleLogin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2143283372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143283371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130f0a8ecb266c342acc75b55b9eba94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GoogleWebAPI: 44721014930-jepi4vrb6asgu2sbig42fr5ijbf0fos4.apps.googleusercontent.com
-  profileUserName_Text: {fileID: 726912044}
-  profileUserEmail_Text: {fileID: 1901280757}
-  UserProfilePic: {fileID: 1801240450}
-  imageUrl: 
-  loginPanel: {fileID: 1841818823}
-  profilePagePanel: {fileID: 28386850}
---- !u!4 &2143283373
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143283371}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 237.94188, y: 1277.2405, z: 2.8266575}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -10378,4 +10333,3 @@ SceneRoots:
   - {fileID: 1293582461}
   - {fileID: 1527327915}
   - {fileID: 656217826}
-  - {fileID: 2143283373}

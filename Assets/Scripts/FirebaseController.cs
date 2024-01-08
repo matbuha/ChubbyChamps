@@ -9,7 +9,6 @@ using Firebase;
 using System.Threading.Tasks;
 using Firebase.Extensions;
 
-
 public class FirebaseController : MonoBehaviour {
 
 
